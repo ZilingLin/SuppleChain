@@ -16,7 +16,7 @@ supple chain on unpay tickets, the blockchain summer school project in ZJU.
   - addBank 将输入公司设为银行，要求发送者为合约部署者或者银行，要求输入公司已经注册
   - getCompany 获取公司信息
   - getVoucherById 获取voucher信息
-  -- 由于将凭证分成voucher和ticket两层来管理，所以ticket的共性信息都会存储在voucher中，比如谁注册的，这张voucher的总额，利率interest，签发日期 signDate，到期日期 dueDate，销毁日期destroyDate（利率，到期日期，销毁日期都是根据贷款的要求填的，这是现实的需求，该模型后面还可以继续扩展，比如银行限定核心企业的签发数，要求在dueDate之后才能核销贷款，过了destroyDate可以让核心企业自动核销等。
+  - - 由于将凭证分成voucher和ticket两层来管理，所以ticket的共性信息都会存储在voucher中，比如谁注册的，这张voucher的总额，利率interest，签发日期 signDate，到期日期 dueDate，销毁日期destroyDate（利率，到期日期，销毁日期都是根据贷款的要求填的，这是现实的需求，该模型后面还可以继续扩展，比如银行限定核心企业的签发数，要求在dueDate之后才能核销贷款，过了destroyDate可以让核心企业自动核销等。
   - getTicketsByVoucher通过voucher的ID获取该voucher下所有现存的ticket
   - getTicketHistory 获得当前ticket的流转历史
   - getMyTickets getMyVouchers 获得发送者名下的ticket或voucher
@@ -26,4 +26,5 @@ supple chain on unpay tickets, the blockchain summer school project in ZJU.
   - writeOffByVoucher 根据voucher的ID进行核销，该操作会将该voucher下的ticket都核销掉，再核销当前voucher
   - 该合约中，所有企业（包括核心企业、银行）都需要注册在Company中，核心企业和银行与普通企业的不同在于他们有没有在isCoreCompany isBank中，这两个map是public的，外部函数可查
 没有getFinance，将凭证给银行的过程其实就是一个转发过程
-银行对核心企业赋权、核销这部分可以有更多业务设置的空间，但是没有想好。
+
+4. 规划：银行对核心企业赋权、核销这部分可以有更多业务设置的空间，但是没有想好。
